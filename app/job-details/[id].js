@@ -7,6 +7,8 @@ import { COLORS, icons, SIZES } from '../../constants'
 import useFetch from '../../hook/useFetch'
 import { ScrollView } from 'react-native-gesture-handler'
 
+const tabs = ['About', 'Qualifications', 'Responsabilities'];
+
 export const JobDetails = () => {
   const params = useGlobalSearchParams();
   const router = useRouter();
@@ -16,6 +18,7 @@ export const JobDetails = () => {
   })
 
   const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
 
   const onRefresh = () => {}
 
@@ -61,7 +64,9 @@ export const JobDetails = () => {
               />
 
               <JobTabs 
-              
+                tabs={tabs}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
               />
             </View>
           )}
